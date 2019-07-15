@@ -259,17 +259,39 @@ const sidebarLinks = document.querySelectorAll('.side-navbar li');
 // const navMenu = document.querySelector('div.nav-menu');
 const backgroundFader = document.getElementsByClassName('background-fader')[0];
 
+document.addEventListener('click', (e) => {
+  if (e.target.classList.contains('fa-times')) {
+    toggleSidebar();
+    console.log('came inside times');
+    // break;
+  }
+  if (sideBar.classList.contains('show-side-navbar')) {
+    // sideBar.classList.toggle('show-side-navbar');
+    // backgroundFader.classList.toggle('fade-background');
+    // console.log(e.target.classList.contains('fa-bars'));
+    toggleSidebar();
+    // break;
+    console.log('came inside total');
+  }
+  if (e.target.classList.contains('fa-bars')) {
+    toggleSidebar();
+    console.log('came inside bars');
+    // break;
+  }
+
+  // console.log(sideBar.classList.contains('show-side-navbar'));
+});
 
 function toggleSidebar() {
   sideBar.classList.toggle('show-side-navbar');
   backgroundFader.classList.toggle('fade-background');
 }
 
-togglebtns.forEach(togglebtn => {
-  togglebtn.onclick = function () {
-    toggleSidebar();
-  };
-});
+// togglebtns.forEach(togglebtn => {
+//   togglebtn.onclick = function () {
+//     toggleSidebar();
+//   };
+// });
 
 backgroundFader.onclick = () => {
   toggleSidebar(); // this is much easier to understand
@@ -284,9 +306,23 @@ sidebarLinks.forEach(link => {
 });
 
 // Animation carousel
-function animationCarousel() {
+function animationCarousel(radiusParam) {
   // Các bạn có thể thay đổi giá trị các biến môi trường ở đây:
-  var radius = 240; // Độ rộng vòng xoay
+  var radius = radiusParam; // Độ rộng vòng xoay
+  function myFunction(x) {
+    if (x.matches) { // If media query matches
+      // document.body.style.backgroundColor = "yellow";
+      radius = 120;
+    } else {
+      //  document.body.style.backgroundColor = "pink";
+      radius = 240;
+    }
+  }
+
+  var x = window.matchMedia("(max-width: 800px)")
+  myFunction(x) // Call listener function at run time
+  x.addListener(myFunction)
+
   var autoRotate = true; // Tự động xoay hay không
   var rotateSpeed = -60; // đơn vị: giây/vòng. thời gian để xoay hết 1 vòng, dấu trừ để xoay ngược lại
   var imgWidth = 120; // độ rộng ảnh (tính theo px)
@@ -362,7 +398,7 @@ function animationCarousel() {
   // thêm nhạc nền
   if (bgMusicURL) {
     document.getElementById('music-container').style.display = 'none';
-    document.getElementById('music-container').innerHTML += `
+    document.getElementById('music-container').innerHTML = `
 <audio src="${bgMusicURL}" ${bgMusicControls? 'controls': ''} autoplay loop>    
 <p>If you are reading this, it is because your browser does not support the audio element.</p>
 </audio>
@@ -467,7 +503,7 @@ function animationCarousel() {
 
 }
 
-animationCarousel();
+animationCarousel(240);
 
 $(document).on('click', '[data-toggle="lightbox"]', function (event) {
   event.preventDefault();
@@ -523,7 +559,7 @@ function changeImage(imageArr) {
   });
   spin_cont.innerHTML = html;
   document.querySelector('#music-container').removeChild(document.querySelector('#music-container audio'))
-  animationCarousel();
+  animationCarousel(240);
 }
 
 // form
@@ -545,17 +581,32 @@ function onInputBlur(event) {
   }
 };
 
-$(document).ready(function() {
+$(document).ready(function () {
   $input = $('.input__field');
-  
+
   // in case there is any value already
-  $input.each(function(){
+  $input.each(function () {
     if ($input.val().trim() !== '') {
       var $parent = $input.parent();
       $parent.addClass('input--filled');
     }
   });
-  
+
   $input.on('focus', onInputFocus);
   $input.on('blur', onInputBlur);
 });
+
+// carousel size
+function myFunction(x) {
+  if (x.matches) { // If media query matches
+    // document.body.style.backgroundColor = "yellow";
+    animationCarousel(120);
+  } else {
+    //  document.body.style.backgroundColor = "pink";
+    animationCarousel(240);
+  }
+}
+
+var x = window.matchMedia("(max-width: 800px)")
+myFunction(x) // Call listener function at run time
+x.addListener(myFunction);
