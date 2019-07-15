@@ -427,21 +427,21 @@ function animationCarousel(radiusParam) {
         sY = nY;
       }
 
-      this.ontouchend = function (e) {
-        this.ontouchmove = this.ontouchend = null;
-        obox.timer = setInterval(function () {
-          desX *= 0.95;
-          desY *= 0.95;
-          tX += desX * 0.1;
-          tY += desY * 0.1;
-          applyTranform(obox);
-          playSpin(false);
-          if (Math.abs(desX) < 0.5 && Math.abs(desY) < 0.5) {
-            clearInterval(obox.timer);
-            playSpin(true);
-          }
-        }, 17);
-      }
+      // this.ontouchend = function (e) {
+      //   this.ontouchmove = this.ontouchend = null;
+      //   obox.timer = setInterval(function () {
+      //     desX *= 0.95;
+      //     desY *= 0.95;
+      //     tX += desX * 0.1;
+      //     tY += desY * 0.1;
+      //     applyTranform(obox);
+      //     playSpin(false);
+      //     if (Math.abs(desX) < 0.5 && Math.abs(desY) < 0.5) {
+      //       clearInterval(obox.timer);
+      //       playSpin(true);
+      //     }
+      //   }, 17);
+      // }
 
       // return false;
     }
