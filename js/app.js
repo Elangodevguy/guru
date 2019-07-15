@@ -408,43 +408,43 @@ function animationCarousel(radiusParam) {
   // cài đặt events
   if (mobilecheck()) {
     // ==================== Touch Events ====================
-    document.ontouchstart = function (e) {
-      clearInterval(obox.timer);
-      e = e || window.event;
-      var sX = e.touches[0].clientX,
-        sY = e.touches[0].clientY;
+    // document.ontouchstart = function (e) {
+    //   clearInterval(obox.timer);
+    //   e = e || window.event;
+    //   var sX = e.touches[0].clientX,
+    //     sY = e.touches[0].clientY;
 
-      this.ontouchmove = function (e) {
-        e = e || window.event;
-        var nX = e.touches[0].clientX,
-          nY = e.touches[0].clientY;
-        desX = nX - sX;
-        desY = nY - sY;
-        tX += desX * 0.1;
-        tY += desY * 0.1;
-        applyTranform(obox);
-        sX = nX;
-        sY = nY;
-      }
+    //   this.ontouchmove = function (e) {
+    //     e = e || window.event;
+    //     var nX = e.touches[0].clientX,
+    //       nY = e.touches[0].clientY;
+    //     desX = nX - sX;
+    //     desY = nY - sY;
+    //     tX += desX * 0.1;
+    //     tY += desY * 0.1;
+    //     applyTranform(obox);
+    //     sX = nX;
+    //     sY = nY;
+    //   }
 
-      // this.ontouchend = function (e) {
-      //   this.ontouchmove = this.ontouchend = null;
-      //   obox.timer = setInterval(function () {
-      //     desX *= 0.95;
-      //     desY *= 0.95;
-      //     tX += desX * 0.1;
-      //     tY += desY * 0.1;
-      //     applyTranform(obox);
-      //     playSpin(false);
-      //     if (Math.abs(desX) < 0.5 && Math.abs(desY) < 0.5) {
-      //       clearInterval(obox.timer);
-      //       playSpin(true);
-      //     }
-      //   }, 17);
-      // }
+    //   this.ontouchend = function (e) {
+    //     this.ontouchmove = this.ontouchend = null;
+    //     obox.timer = setInterval(function () {
+    //       desX *= 0.95;
+    //       desY *= 0.95;
+    //       tX += desX * 0.1;
+    //       tY += desY * 0.1;
+    //       applyTranform(obox);
+    //       playSpin(false);
+    //       if (Math.abs(desX) < 0.5 && Math.abs(desY) < 0.5) {
+    //         clearInterval(obox.timer);
+    //         playSpin(true);
+    //       }
+    //     }, 17);
+    //   }
 
-      // return false;
-    }
+    //   // return false;
+    // }
   } else {
     // ==================== Mouse Events ====================
     document.onmousedown = function (e) {
