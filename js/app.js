@@ -300,7 +300,7 @@ backgroundFader.onclick = () => {
 // Handle clicks on li element inside navigation sidebar 
 sidebarLinks.forEach(link => {
   link.onclick = e => {
-    e.preventDefault();
+    // e.preventDefault();
     toggleSidebar();
   };
 });
