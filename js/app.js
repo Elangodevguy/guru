@@ -449,12 +449,12 @@ function animationCarousel(radiusParam) {
       clearInterval(obox.timer);
       e = e || window.event;
       var sX = e.touches[0].clientX;
-        // sY = e.touches[0].clientY;
+      // sY = e.touches[0].clientY;
 
       this.ontouchmove = function (e) {
         e = e || window.event;
         var nX = e.touches[0].clientX;
-          // nY = e.touches[0].clientY;
+        // nY = e.touches[0].clientY;
         desX = nX - sX;
         // desY = nY - sY;
         tX += desX * 0.1;
